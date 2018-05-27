@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <style>
+        #snackbar {
+            position: fixed;
+            bottom: 5px;
+            overflow-y: hidden;
+            /* approximate max height */
+            /* commented out as using js to get the outer div scroll height 
+            max-height: 500px; 
+            */
+            max-height: 0px; /* keeping 0 here to retain animation */
+            -webkit-transition: 1s linear all;
+            -moz-transition: 1s linear all;
+            -ms-transition: 1s linear all;
+            -o-transition: 1s linear all;
+            transition: 1s linear all;
+        }
+
+        #snackbar.hide {
+            max-height: 0 !important;
+        }
+    </style>
+
+    <head>
+
+        <body>
+            <div id="snackbar" class="hide">
+                <img src="https://picsum.photos/200">
+            </div>
+            <a href="javascript:;" onclick="show()">show</a> |
+            <a href="javascript:;" onclick="hide()">hide</a>
+        </body>
+
+        <script>
+            // gets the sliding up & down element
+            var snackbar = document.getElementById('snackbar');
+
+            function show() {
+                snackbar.classList.remove('hide');
+                // sets the height of the element dynamically
+                snackbar.style.maxHeight = snackbar.scrollHeight + 'px';
+            }
+
+            function hide() {
+                snackbar.classList.add('hide');
+            }
+
+        </script>
+
+</html>
